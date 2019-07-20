@@ -1,10 +1,11 @@
 package model;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Embeddable
 public class Professor extends User {
     
     @Column(name="salary")
@@ -12,9 +13,12 @@ public class Professor extends User {
 
     protected Professor() {super();}
 
+    public Professor(String firstName, String lastName) {
+        super(firstName,lastName);
+    }
+
     public Professor(String firstName, String lastName, int salary) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
+        super(firstName,lastName);
         this.salary = salary;
     }
 
@@ -28,7 +32,9 @@ public class Professor extends User {
 
     @Override
     public String toString() {
-        return "Professor " + this.getFirstName() + " " + 
-            this.getLastName() + "  Salary : " + salary;
+        String s = salary == 0 ? "N/A" : Integer.toString(salary);
+
+        return "Professor ID " + this.getId() + ": " + this.getFirstName() + " " + 
+            this.getLastName() + "  Salary : " + s;
     }
 }

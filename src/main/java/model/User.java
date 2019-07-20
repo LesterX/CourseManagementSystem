@@ -27,6 +27,13 @@ public class User implements Serializable{
     @NotEmpty
     private String lastName;
 
+    public User() {}
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public long getId() {
         return id;
     }

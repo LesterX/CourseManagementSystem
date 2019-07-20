@@ -3,11 +3,16 @@ package model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Course implements Serializable{
@@ -19,9 +24,9 @@ public class Course implements Serializable{
     @NotEmpty
     private String name;
 
-    @Column(name = "prof")
-    @NotEmpty
-    private long profId;
+    @ManyToOne
+    @JoinColumn(name = "Professor_id")
+    private Professor prof;
 
     @Column(name = "time")
     private String time;
@@ -30,9 +35,9 @@ public class Course implements Serializable{
     protected Course() {}
 
     // Constructor
-    public Course(String name, long profId, String time) {
+    public Course(String name, Professor prof, String time) {
         this.name = name;
-        this.profId = profId;
+        this.prof = prof;
         this.time = time;
     }
 
@@ -40,8 +45,8 @@ public class Course implements Serializable{
         return name;
     }
 
-    public long getProfId() {
-        return profId;
+    public Professor getProf() {
+        return prof;
     }
 
     public String getTime() {
@@ -52,8 +57,8 @@ public class Course implements Serializable{
         this.name = name;
     }
 
-    public void setProfId(long profId) {
-        this.profId = profId;
+    public void setProf(Professor prof) {
+        this.prof = prof;
     }
 
     public void setTime(String time) {
@@ -62,7 +67,7 @@ public class Course implements Serializable{
 
     @Override
     public String toString() {
-        return "Course Name: " + name + ", Prof ID: " + profId +
-            ", Time: " + time;  
+        return "Course Name: " + name + ", Prof: " + prof.getFirstName() +
+            " " + prof.getLastName() + ", Time: " + time;  
     }
 }
