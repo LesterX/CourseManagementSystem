@@ -16,7 +16,6 @@ import javax.validation.constraints.NotEmpty;
 @MappedSuperclass
 public class User implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "fisrtName")
@@ -29,7 +28,8 @@ public class User implements Serializable{
 
     public User() {}
 
-    public User(String firstName, String lastName) {
+    public User(long id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }

@@ -3,9 +3,11 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;;
 
 @Entity
 @Embeddable
+@NamedQuery(name = "Professor.findAll", query="SELECT p FROM Professor p ORDER BY p.id")
 public class Professor extends User {
     
     @Column(name="salary")
@@ -13,12 +15,12 @@ public class Professor extends User {
 
     protected Professor() {super();}
 
-    public Professor(String firstName, String lastName) {
-        super(firstName,lastName);
+    public Professor(long id, String firstName, String lastName) {
+        super(id,firstName,lastName);
     }
 
-    public Professor(String firstName, String lastName, int salary) {
-        super(firstName,lastName);
+    public Professor(long id, String firstName, String lastName, int salary) {
+        super(id, firstName,lastName);
         this.salary = salary;
     }
 

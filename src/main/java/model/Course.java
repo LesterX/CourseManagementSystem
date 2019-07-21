@@ -17,10 +17,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Course implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     @NotEmpty
     private String name;
 
@@ -35,7 +34,8 @@ public class Course implements Serializable{
     protected Course() {}
 
     // Constructor
-    public Course(String name, Professor prof, String time) {
+    public Course(long id, String name, Professor prof, String time) {
+        this.id = id;
         this.name = name;
         this.prof = prof;
         this.time = time;
@@ -67,7 +67,11 @@ public class Course implements Serializable{
 
     @Override
     public String toString() {
-        return "Course Name: " + name + ", Prof: " + prof.getFirstName() +
+        if (prof == null) {
+            return "Course Name: " + name + ", Prof: N/A, Time: " + time;
+        }
+        else
+            return "Course Name: " + name + ", Prof: " + prof.getFirstName() +
             " " + prof.getLastName() + ", Time: " + time;  
     }
 }
