@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add New Professor</title>
+</head>
+
+<body>
+    <h1>Add New Professor</h1>
+
+    <form th:action="@{/user/professor/add}" th:object="${prof}" method="post">
+        <p>ID: <input type="number" th:field="*{id}" /></p>
+        <p>First Name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p>Salary: <input type="number" th:field="*{salary}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form> 
+</body>
+
+</html>

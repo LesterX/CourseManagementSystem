@@ -13,7 +13,7 @@ public class Professor extends User {
     @Column(name="salary")
     private int salary;
 
-    protected Professor() {super();}
+    public Professor() {super();}
 
     public Professor(long id, String firstName, String lastName) {
         super(id,firstName,lastName);

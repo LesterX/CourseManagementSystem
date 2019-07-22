@@ -18,7 +18,7 @@ public class User implements Serializable{
     @Id
     private long id;
 
-    @Column(name = "fisrtName")
+    @Column(name = "firstName")
     @NotEmpty
     private String firstName;
     
