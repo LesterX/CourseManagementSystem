@@ -14,5 +14,5 @@ public interface ProfessorRepository extends CrudRepository<Professor,Long> {
     
     List<Professor> findByLastName(String lastName);
     
-    Professor findById(long id);
+    Professor findByUid(long uid);
 }

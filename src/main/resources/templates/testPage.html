@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+	<h1>Test Page</h1>
+    <p th:text="'uid: ' + ${testProf.uid}" />
+    <p th:text="'first name: ' + ${testProf.firstName}" />
+    <p th:text="'last name: ' + ${testProf.lastName}" />
+    <p th:text="'salary: ' + ${testProf.salary}" />
+</body>
+</html>

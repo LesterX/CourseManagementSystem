@@ -22,7 +22,7 @@
                 <td colspan="2"> N/A </td>
             </tr>
             <tr th:each="prof : ${allProfessors}">
-                <td><span th:text="${prof.getId()}"> ID </span></td>
+                <td><span th:text="${prof.getUid()}"> ID </span></td>
                 <td><span th:text="${prof.getFirstName()}"> First Name </span></td>
                 <td><span th:text="${prof.getLastName()}"> Last Name </span></td>
                 <td><span th:text="${prof.getSalary()}"> Salary </span></td>

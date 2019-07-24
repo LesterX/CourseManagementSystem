@@ -7,7 +7,7 @@ import javax.persistence.NamedQuery;;
 
 @Entity
 @Embeddable
-@NamedQuery(name = "Professor.findAll", query="SELECT p FROM Professor p ORDER BY p.id")
+@NamedQuery(name = "Professor.findAll", query="SELECT p FROM Professor p ORDER BY p.uid")
 public class Professor extends User {
     
     @Column(name="salary")
@@ -36,7 +36,7 @@ public class Professor extends User {
     public String toString() {
         String s = salary == 0 ? "N/A" : Integer.toString(salary);
 
-        return "Professor ID " + this.getId() + ": " + this.getFirstName() + " " + 
+        return "Professor ID " + this.getUid() + ": " + this.getFirstName() + " " + 
             this.getLastName() + "  Salary : " + s;
     }
 }

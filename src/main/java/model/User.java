@@ -16,7 +16,7 @@ import javax.validation.constraints.NotEmpty;
 @MappedSuperclass
 public class User implements Serializable{
     @Id
-    private long id;
+    private long uid;
 
     @Column(name = "firstName")
     @NotEmpty
@@ -29,13 +29,13 @@ public class User implements Serializable{
     public User() {}
 
     public User(long id, String firstName, String lastName) {
-        this.id = id;
+        this.uid = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public long getId() {
-        return id;
+    public long getUid() {
+        return uid;
     }
 
     public String getFirstName() {
@@ -46,8 +46,8 @@ public class User implements Serializable{
         return lastName;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUid(long id) {
+        this.uid = id;
     }
 
     public void setFirstName(String firstName) {
